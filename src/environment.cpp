@@ -76,11 +76,11 @@ void cityBlock(pcl::visualization::PCLVisualizer::Ptr& viewer)
 {
   ProcessPointClouds<pcl::PointXYZI> pointProcessor;
   pcl::PointCloud<pcl::PointXYZI>::Ptr inputCloud = pointProcessor.loadPcd("../src/sensors/data/pcd/data_1/0000000000.pcd");
-  pcl::PointCloud<pcl::PointXYZI>::Ptr filterCloud = pointProcessor.FilterCloud(inputCloud,0.28,Eigen::Vector4f (-8,-6,-8,1),Eigen::Vector4f (15,8,8,1));
+  pcl::PointCloud<pcl::PointXYZ>::Ptr filterCloud = pointProcessor.FilterCloud(inputCloud,0.28,Eigen::Vector4f (-8,-6,-8,1),Eigen::Vector4f (15,8,8,1));
   std::pair<pcl::PointCloud<pcl::PointXYZ>::Ptr, pcl::PointCloud<pcl::PointXYZ>::Ptr> segmentCloud = pointProcessor.SegmentPlane(filterCloud, 100, 0.2);
 
   //renderPointCloud(viewer,inputCloud,"inputCloud");
-  //renderPointCloud(viewer,filterCloud,"filterCloud");
+  renderPointCloud(viewer,filterCloud,"filterCloud");
   renderPointCloud(viewer,segmentCloud.first,"obstCloud",Color(1,0,0));
   renderPointCloud(viewer,segmentCloud.second,"planeCloud",Color(0,1,0));
 }
