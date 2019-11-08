@@ -89,7 +89,7 @@ void cityBlock(pcl::visualization::PCLVisualizer::Ptr& viewer)
 
     for(pcl::PointCloud<pcl::PointXYZ>::Ptr cluster : cloudClusters)
     {
-          std::cout << "cluster size ";
+          std::cout << "debug cluster size ";
           pointProcessor.numPoints(cluster);
           renderPointCloud(viewer,cluster,"obstCloud"+std::to_string(clusterId),colors[clusterId%colors.size()]);
 
