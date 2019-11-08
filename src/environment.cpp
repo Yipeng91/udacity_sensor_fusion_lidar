@@ -132,7 +132,7 @@ int main (int argc, char** argv)
     initCamera(setAngle, viewer);
     //simpleHighway(viewer);
     ProcessPointClouds<pcl::PointXYZ> pointProcessor;
-    std::vector<boost::filesystem::path> stream = pointProcessor.streamPcd("../src/sensors/data/pcd/data_2");
+    std::vector<boost::filesystem::path> stream = pointProcessor.streamPcd("../src/sensors/data/pcd/data_1");
     auto streamIterator = stream.begin();
 
     pcl::PointCloud<pcl::PointXYZ>::Ptr inputCloud;
@@ -144,7 +144,7 @@ int main (int argc, char** argv)
         cityBlock(viewer,pointProcessor,inputCloud);
         streamIterator++;
         if(streamIterator == stream.end())
-            streamIterator == stream.begin();
+            streamIterator = stream.begin();
 
         viewer->spinOnce ();
     } 
